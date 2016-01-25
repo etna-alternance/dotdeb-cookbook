@@ -8,7 +8,7 @@ end
 
 versions = node['dotdeb_repo']['repositories'][node['lsb']['codename']]
 
-node['php_version'] = "5.6" unless node['php_version']
+node.default['php_version'] = "5.6" unless node['php_version']
 
 unless versions.keys.include? node['php_version']
     Chef::Application.fatal!("#{node['php_version']}: no such php version for #{node['lsb']['codename']}")
