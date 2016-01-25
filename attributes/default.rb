@@ -1,4 +1,5 @@
 default['dotdeb_repo']['priority'] = 700
+default['php_version'] = "5.6"
 default['dotdeb_repo']['repositories'] = {
     'jessie' => {
         '7.0' => ['dotdeb'],
@@ -12,4 +13,3 @@ default['dotdeb_repo']['repositories'] = {
         '5.4' => ['dotdeb', 'dotdeb-php54']
     }
 }
-
