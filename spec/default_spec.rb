@@ -34,6 +34,22 @@ describe 'dotdeb_repo::default' do
         end
     end
 
+    context 'jessie' do
+        let(:chef_run) do
+          runner = ChefSpec::Runner.new(
+            'platform' => 'debian',
+            'version' => '8.0.0'
+            )
+          runner.node.set['lsb']['codename'] = 'jessie'
+          runner.converge(described_recipe)
+        end
+
+        it 'add the dotdeb repository to sources.list.d' do
+            expect(chef_run).to add_apt_repository 'dotdeb'
+            expect(chef_run).to add_apt_preference 'dotdeb'
+        end
+    end
+
     context 'priority attribute' do
 
         let(:chef_run) do
